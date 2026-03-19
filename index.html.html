@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Web Design Proposal — Address Nigeria / Grandview Ecosystem</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f0e0b;
+    --ink-mid: #4a4740;
+    --ink-muted: #8a8680;
+    --sand: #f5f2eb;
+    --sand-dark: #eae6dc;
+    --cream: #fdfcf8;
+    --green-deep: #0e3d2a;
+    --green-mid: #1a6845;
+    --green-light: #d4ede2;
+    --gold: #b8892a;
+    --gold-light: #f5e6c0;
+    --red-accent: #c0362a;
+    --border: rgba(15,14,11,0.12);
+    --border-strong: rgba(15,14,11,0.22);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    background: var(--green-deep);
+    color: #fff;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 79px, rgba(255,255,255,0.04) 80px),
+      repeating-linear-gradient(90deg, transparent, transparent 79px, rgba(255,255,255,0.04) 80px);
+  }
+
+  .cover-bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 60px;
+    border-bottom: 0.5px solid rgba(255,255,255,0.15);
+  }
+
+  .cover-logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+  }
+
+  .cover-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.08em;
+  }
+
+  .cover-body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 60px 60px;
+    max-width: 860px;
+  }
+
+  .cover-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #7fcca6;
+    margin-bottom: 28px;
+  }
+
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(44px, 7vw, 80px);
+    font-weight: 700;
+    line-height: 1.05;
+    color: #fff;
+    margin-bottom: 12px;
+  }
+
+  .cover-title span {
+    color: #7fcca6;
+  }
+
+  .cover-subtitle {
+    font-size: 20px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.6);
+    max-width: 560px;
+    margin-top: 20px;
+    line-height: 1.6;
+  }
+
+  .cover-footer {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 32px 60px;
+    border-top: 0.5px solid rgba(255,255,255,0.1);
+  }
+
+  .cover-meta {
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.9;
+  }
+
+  .cover-meta strong { color: rgba(255,255,255,0.75); font-weight: 500; }
+
+  .cover-accent-block {
+    background: #7fcca6;
+    color: var(--green-deep);
+    padding: 16px 24px;
+    border-radius: 4px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-align: right;
+    line-height: 1.8;
+  }
+
+  /* ── LAYOUT ── */
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 80px 60px;
+  }
+
+  @media (max-width: 720px) {
+    .page { padding: 48px 28px; }
+    .cover-bar, .cover-body, .cover-footer { padding-left: 28px; padding-right: 28px; }
+  }
+
+  /* ── SECTION HEADERS ── */
+  .section-number {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--green-mid);
+    margin-bottom: 10px;
+  }
+
+  h1.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(30px, 4vw, 46px);
+    font-weight: 600;
+    line-height: 1.15;
+    margin-bottom: 8px;
+  }
+
+  h2.subsection {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 600;
+    margin: 48px 0 14px;
+  }
+
+  .lead {
+    font-size: 17px;
+    font-weight: 300;
+    color: var(--ink-mid);
+    max-width: 660px;
+    line-height: 1.75;
+    margin-top: 16px;
+  }
+
+  .divider {
+    border: none;
+    border-top: 0.5px solid var(--border);
+    margin: 56px 0;
+  }
+
+  /* ── PAGE BREAKS ── */
+  .page-break {
+    background: var(--sand);
+    border-top: 0.5px solid var(--border);
+    border-bottom: 0.5px solid var(--border);
+    padding: 14px 60px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .page-break::after {
+    content: '';
+    flex: 1;
+    height: 0.5px;
+    background: var(--border);
+  }
+
+  /* ── CARDS ── */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 0.5px solid var(--border);
+    margin: 28px 0;
+    overflow: hidden;
+  }
+
+  .card {
+    background: var(--cream);
+    padding: 28px 24px;
+  }
+
+  .card-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    background: var(--green-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+
+  .card-icon svg { width: 18px; height: 18px; }
+
+  .card h3 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    letter-spacing: 0.01em;
+  }
+
+  .card p {
+    font-size: 13px;
+    color: var(--ink-mid);
+    line-height: 1.65;
+  }
+
+  /* ── NUMBERED LIST ── */
+  .num-list {
+    counter-reset: num;
+    list-style: none;
+    margin: 20px 0;
+  }
+
+  .num-list li {
+    counter-increment: num;
+    display: flex;
+    gap: 20px;
+    padding: 18px 0;
+    border-bottom: 0.5px solid var(--border);
+    font-size: 15px;
+    align-items: flex-start;
+  }
+
+  .num-list li::before {
+    content: counter(num, decimal-leading-zero);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--green-mid);
+    min-width: 28px;
+    padding-top: 4px;
+  }
+
+  /* ── SITEMAP TABLE ── */
+  .sitemap-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    margin: 20px 0;
+  }
+
+  .sitemap-table th {
+    text-align: left;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    padding: 10px 16px;
+    border-bottom: 0.5px solid var(--border-strong);
+  }
+
+  .sitemap-table td {
+    padding: 13px 16px;
+    vertical-align: top;
+    border-bottom: 0.5px solid var(--border);
+    color: var(--ink-mid);
+    line-height: 1.6;
+  }
+
+  .sitemap-table td:first-child {
+    font-weight: 600;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+
+  .sitemap-table tr:hover td { background: var(--sand); }
+
+  .badge {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-weight: 500;
+  }
+
+  .badge-launch { background: var(--green-light); color: var(--green-deep); }
+  .badge-post   { background: var(--gold-light);  color: #6b4e0f; }
+  .badge-phase2 { background: #e8e4f8;            color: #3b2e7a; }
+
+  /* ── PAGE WIREFRAMES ── */
+  .wireframe-block {
+    background: var(--sand);
+    border: 0.5px solid var(--border-strong);
+    border-radius: 6px;
+    padding: 32px 28px;
+    margin: 24px 0;
+  }
+
+  .wireframe-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 20px;
+  }
+
+  .wf-section {
+    background: rgba(255,255,255,0.65);
+    border: 0.5px dashed var(--border-strong);
+    border-radius: 4px;
+    padding: 14px 18px;
+    margin: 10px 0;
+    font-size: 13px;
+    color: var(--ink-mid);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .wf-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--green-mid);
+    flex-shrink: 0;
+  }
+
+  .wf-dot.gold { background: var(--gold); }
+  .wf-dot.muted { background: var(--ink-muted); opacity: 0.4; }
+
+  /* ── TIMELINE ── */
+  .timeline {
+    position: relative;
+    padding-left: 36px;
+    margin: 28px 0;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 8px;
+    bottom: 0;
+    width: 0.5px;
+    background: var(--border-strong);
+  }
+
+  .tl-item {
+    position: relative;
+    padding: 0 0 28px;
+  }
+
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -30px;
+    top: 8px;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--cream);
+    border: 1.5px solid var(--green-mid);
+  }
+
+  .tl-item.active::before { background: var(--green-mid); }
+
+  .tl-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--green-mid);
+    margin-bottom: 4px;
+  }
+
+  .tl-title {
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+
+  .tl-desc { font-size: 13.5px; color: var(--ink-mid); }
+
+  /* ── DESIGN SYSTEM SWATCHES ── */
+  .swatch-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 20px 0;
+  }
+
+  .swatch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .swatch-color {
+    width: 64px; height: 64px;
+    border-radius: 6px;
+    border: 0.5px solid rgba(0,0,0,0.08);
+  }
+
+  .swatch-name {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--ink-muted);
+    text-align: center;
+  }
+
+  /* ── TYPOGRAPHY DEMO ── */
+  .type-row {
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+    padding: 14px 0;
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .type-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--ink-muted);
+    min-width: 110px;
+  }
+
+  /* ── CALLOUT BOX ── */
+  .callout {
+    border-left: 3px solid var(--green-mid);
+    background: var(--green-light);
+    padding: 18px 22px;
+    border-radius: 0 6px 6px 0;
+    margin: 28px 0;
+    font-size: 14px;
+    color: var(--green-deep);
+    line-height: 1.7;
+  }
+
+  .callout strong { font-weight: 600; }
+
+  /* ── KPI STRIP ── */
+  .kpi-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 0.5px solid var(--border);
+    margin: 28px 0;
+    overflow: hidden;
+  }
+
+  @media (max-width: 600px) { .kpi-strip { grid-template-columns: repeat(2, 1fr); } }
+
+  .kpi {
+    background: var(--cream);
+    padding: 22px 18px;
+  }
+
+  .kpi-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--green-deep);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .kpi-label { font-size: 12px; color: var(--ink-muted); line-height: 1.45; }
+
+  /* ── DELIVERABLE CHECKLIST ── */
+  .deliverable-list { list-style: none; margin: 16px 0; }
+
+  .deliverable-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 0.5px solid var(--border);
+    font-size: 14px;
+  }
+
+  .check {
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: var(--green-light);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .check svg { width: 9px; height: 9px; }
+
+  /* ── PRICING TABLE ── */
+  .price-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 28px 0;
+  }
+
+  @media (max-width: 640px) { .price-grid { grid-template-columns: 1fr; } }
+
+  .price-card {
+    border: 0.5px solid var(--border-strong);
+    border-radius: 8px;
+    padding: 24px 20px;
+    background: var(--cream);
+  }
+
+  .price-card.featured {
+    border-color: var(--green-mid);
+    background: var(--green-deep);
+    color: #fff;
+  }
+
+  .price-tier {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 12px;
+  }
+
+  .price-card.featured .price-tier { color: #7fcca6; }
+
+  .price-amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .price-period { font-size: 12px; color: var(--ink-muted); margin-bottom: 20px; }
+  .price-card.featured .price-period { color: rgba(255,255,255,0.5); }
+
+  .price-features { list-style: none; font-size: 13px; }
+  .price-features li { padding: 7px 0; border-bottom: 0.5px solid var(--border); line-height: 1.5; }
+  .price-card.featured .price-features li { border-color: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8); }
+  .price-features li:last-child { border: none; }
+
+  /* ── FOOTER ── */
+  .doc-footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.5);
+    padding: 40px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.06em;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .doc-footer strong { color: rgba(255,255,255,0.8); }
+</style>
+</head>
+<body>
+
+<!-- ───────────────────────────── COVER ───────────────────────────── -->
+<div class="cover">
+  <div class="cover-bar">
+    <span class="cover-logo">Grandview / G-DPIPS Ecosystem</span>
+    <span class="cover-date">Prepared: 17 March 2026</span>
+  </div>
+
+  <div class="cover-body">
+    <p class="cover-eyebrow">Web Design Proposal — Digital Presence</p>
+    <h1 class="cover-title">Address<br><span>Nigeria</span><br>Online</h1>
+    <p class="cover-subtitle">A flagship digital presence for the National Digital Addressing System and the Grandview sovereign infrastructure stack — built for the 11 May 2026 public launch.</p>
+  </div>
+
+  <div class="cover-footer">
+    <div class="cover-meta">
+      <strong>Client</strong>  Barrister Bisi Adegbuyi / Grandview / TGIF<br>
+      <strong>Scope</strong>   Address Nigeria · CRYLID · AiG-CTG · NINjaMap ecosystem<br>
+      <strong>Launch target</strong>  11 May 2026
+    </div>
+    <div class="cover-accent-block">
+      PHASE 1 DELIVERABLE<br>
+      MVP · Launch-Ready<br>
+      Digital + Social
+    </div>
+  </div>
+</div>
+
+<!-- ───────────────────────────── EXECUTIVE SUMMARY ───────────────────────────── -->
+<div class="page">
+  <p class="section-number">01 — Executive Summary</p>
+  <h1 class="section-title">The strategic case for a world-class web presence</h1>
+  <p class="lead">Address Nigeria launches 11 May 2026 as Nigeria's sovereign digital addressing infrastructure. The website is not a brochure — it is the primary activation instrument for awareness, trust-building, and partnership pipeline generation ahead of CRYLID pilot closures.</p>
+
+  <div class="kpi-strip">
+    <div class="kpi"><div class="kpi-val">774</div><div class="kpi-label">LGAs targeted for nationwide coverage</div></div>
+    <div class="kpi"><div class="kpi-val">11<br><span style="font-size:18px">May</span></div><div class="kpi-label">Public launch deadline</div></div>
+    <div class="kpi"><div class="kpi-val">4</div><div class="kpi-label">Core modules to communicate at launch</div></div>
+    <div class="kpi"><div class="kpi-val">3+</div><div class="kpi-label">Private-sector beachhead verticals</div></div>
+  </div>
+
+  <p style="font-size:15px; color:var(--ink-mid); line-height:1.75;">This proposal covers: site strategy, information architecture, page-by-page wireframe intent, visual identity parameters, technical stack recommendation, content phasing, and a delivery timeline aligned to the May launch. All decisions are grounded in the Grandview Consolidated Program Report (March 2026).</p>
+
+  <div class="callout">
+    <strong>Design philosophy.</strong> The site must communicate institutional-grade credibility to insurance executives, FIRS/JTB leaders, and diaspora investors — while remaining accessible and shareable on WhatsApp. Refined, document-like typography. Nigerian national pride without the visual clichés. Sovereign infrastructure, not a startup pitch.
+  </div>
+</div>
+
+<div class="page-break">02 — Objectives &amp; Audience</div>
+
+<!-- ───────────────────────────── OBJECTIVES ───────────────────────────── -->
+<div class="page">
+  <p class="section-number">02 — Objectives &amp; Target Audience</p>
+  <h1 class="section-title">Who we're building for, and what we need them to do</h1>
+
+  <h2 class="subsection">Primary objectives</h2>
+  <ol class="num-list">
+    <li><strong>Establish narrative authority.</strong> Address Nigeria must be perceived as the definitive national addressing standard before competitors or appropriators can claim the frame.</li>
+    <li><strong>Generate partnership pipeline.</strong> Insurance, telco, and pension executives must be able to understand the value proposition in under 90 seconds and find a clear next step (demo request, NDA, pilot inquiry).</li>
+    <li><strong>Build public legitimacy.</strong> Citizens, media, and civil society stakeholders need to understand the concept and trust its federated, bottom-up design.</li>
+    <li><strong>Support diaspora channels.</strong> PROTIVA diaspora workflows and investment verification require an international-facing presence with global credibility signals.</li>
+    <li><strong>Enable WhatsApp amplification.</strong> Every page must be shareable — og:image, concise titles, open graph metadata — because WhatsApp is the primary distribution channel for Nigeria's decision-maker class.</li>
+  </ol>
+
+  <h2 class="subsection">Audience segments and site journeys</h2>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-icon" style="background:#e8f4ff">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#185FA5" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+      </div>
+      <h3>Private-sector executives</h3>
+      <p>Insurance, pensions, telco, fintech. Seek: KYC uplift, fraud reduction, compliance efficiency. Journey: Homepage → Verify (CRYLID) → Partner with us.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#0e3d2a" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </div>
+      <h3>Government &amp; revenue institutions</h3>
+      <p>FIRS, JTB, land registries, LGA admin. Seek: addressable tax base, fraud intelligence, title verification. Journey: Homepage → How it works → Get briefed.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:#fff0e8">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#993C1D" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+      </div>
+      <h3>Diaspora &amp; property investors</h3>
+      <p>Nigerians abroad seeking verified property investment. Journey: Homepage → PROTIVA/NINjaMap → Verify a property / Get started.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:#f5f0ff">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#534AB7" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      </div>
+      <h3>Media, policy &amp; civil society</h3>
+      <p>Journalists, think tanks, NGOs, academics. Seek: credible facts, downloadable brief, IP accountability narrative. Journey: About → Press kit → Report.</p>
+    </div>
+  </div>
+</div>
+
+<div class="page-break">03 — Information Architecture</div>
+
+<!-- ───────────────────────────── SITEMAP ───────────────────────────── -->
+<div class="page">
+  <p class="section-number">03 — Information Architecture</p>
+  <h1 class="section-title">Sitemap and page-level intent</h1>
+  <p class="lead">The site launches with a lean, high-impact structure. No module sprawl at launch — a clear spine with expansion hooks for Phase 2 and Phase 3 additions.</p>
+
+  <table class="sitemap-table">
+    <thead>
+      <tr>
+        <th>Page / Route</th>
+        <th>Purpose</th>
+        <th>Primary CTA</th>
+        <th>Phase</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>/ — Homepage</td>
+        <td>Flagship narrative: what Address Nigeria is and why it matters for Nigeria right now. Showcase AiG-CTG addressing, CRYLID trust layer, and the ecosystem map.</td>
+        <td>Request a briefing</td>
+        <td><span class="badge badge-launch">Launch</span></td>
+      </tr>
+      <tr>
+        <td>/how-it-works</td>
+        <td>Clear, visual explainer of the AiG-CTG tessellation layer, CRYLID verification, DTM trust marks. Designed for executive audiences and journalists.</td>
+        <td>See a demo</td>
+        <td><span class="badge badge-launch">Launch</span></td>
+      </tr>
+      <tr>
+        <td>/for-business</td>
+        <td>Private-sector value proposition: insurance fraud, KYC, pension onboarding, logistics. Use-case cards with quantified benefit framing.</td>
+        <td>Start a pilot conversation</td>
+        <td><span class="badge badge-launch">Launch</span></td>
+      </tr>
+      <tr>
+        <td>/for-government</td>
+        <td>Revenue institutions, LGAs, registries. How Address Nigeria + CRYLID reduces revenue leakage and improves service delivery.</td>
+        <td>Request a government brief</td>
+        <td><span class="badge badge-launch">Launch</span></td>
+      </tr>
+      <tr>
+        <td>/ecosystem</td>
+        <td>Visual map of all modules (Address Nigeria, CRYLID, DTM, CTM, NINjaMap, PROTIVA, ABISO-LOGIN) with clear role separation. IP-assertive framing.</td>
+        <td>Explore the API</td>
+        <td><span class="badge badge-launch">Launch</span></td>
+      </tr>
+      <tr>
+        <td>/about</td>
+        <td>Founding vision — Digital Federalism ideology (Hegel–Awolowo–Adegbuyi lineage). Governance, team, and stewardship by TGIF.</td>
+        <td>Our story</td>
+        <td><span class="badge badge-launch">Launch</span></td>
+      </tr>
+      <tr>
+        <td>/press</td>
+        <td>Media kit, press releases, factsheet PDF, contact for journalists. Supports IP and narrative-authority positioning.</td>
+        <td>Download press kit</td>
+        <td><span class="badge badge-launch">Launch</span></td>
+      </tr>
+      <tr>
+        <td>/contact</td>
+        <td>Segmented inquiry form: pilot inquiry / media / partnership / general. Feeds into NDA-bound disclosure workflow.</td>
+        <td>Get in touch</td>
+        <td><span class="badge badge-launch">Launch</span></td>
+      </tr>
+      <tr>
+        <td>/ninjamap</td>
+        <td>Dedicated page for the geospatial cadastral navigation module. OSM-powered map preview, integration use cases.</td>
+        <td>View NINjaMap</td>
+        <td><span class="badge badge-post">Post-launch</span></td>
+      </tr>
+      <tr>
+        <td>/protiva</td>
+        <td>Property title verification marketplace for local and diaspora users. Registry integration pipeline.</td>
+        <td>Verify a property</td>
+        <td><span class="badge badge-post">Post-launch</span></td>
+      </tr>
+      <tr>
+        <td>/developers</td>
+        <td>API documentation for AiG-CTG addressing, CRYLID verification, CTM services. Developer onboarding.</td>
+        <td>View API docs</td>
+        <td><span class="badge badge-phase2">Phase 2</span></td>
+      </tr>
+      <tr>
+        <td>/dashboard</td>
+        <td>Institutional control tower: risk scoring, fraud signals, audit trails. Subscriber-only.</td>
+        <td>Log in</td>
+        <td><span class="badge badge-phase2">Phase 2</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="page-break">04 — Page Wireframes</div>
+
+<!-- ───────────────────────────── WIREFRAMES ───────────────────────────── -->
+<div class="page">
+  <p class="section-number">04 — Page Structure &amp; Wireframes</p>
+  <h1 class="section-title">Section-by-section layout intent</h1>
+
+  <h2 class="subsection">Homepage ( / )</h2>
+  <div class="wireframe-block">
+    <p class="wireframe-label">Homepage — sequential section layout</p>
+    <div class="wf-section"><div class="wf-dot"></div><strong>Navigation bar</strong> — wordmark (Address Nigeria), nav links, "Request briefing" CTA button. Sticky on scroll.</div>
+    <div class="wf-section"><div class="wf-dot"></div><strong>Hero</strong> — Full-width. Large typographic statement: "Every Nigerian. Every Place. Precisely Located." Animated AiG-CTG grid background (subtle). Dual CTA: "How it works" / "For business".</div>
+    <div class="wf-section"><div class="wf-dot gold"></div><strong>Credibility strip</strong> — Single line: "Powered by AiG-CTG · Secured by CRYLID · Federated across 774 LGAs · Built by Grandview / TGIF". Muted background. Scrolling marquee on mobile.</div>
+    <div class="wf-section"><div class="wf-dot"></div><strong>What is Address Nigeria</strong> — 2-column: left = editorial paragraph + stats; right = animated address code card showing an AiG-CTG code being generated from a location.</div>
+    <div class="wf-section"><div class="wf-dot"></div><strong>The three pillars</strong> — 3-up card grid: Address (AiG-CTG) · Verify (CRYLID/DTM) · Map (NINjaMap). Each card: icon, name, one-line benefit, "Learn more" link.</div>
+    <div class="wf-section"><div class="wf-dot gold"></div><strong>Use case selector</strong> — Interactive tab strip: Insurance · Pensions · Telco · Government · Diaspora. Each tab reveals a tailored scenario card with benefit headline + testimonial placeholder.</div>
+    <div class="wf-section"><div class="wf-dot"></div><strong>National scope map</strong> — Stylised Nigeria map with glowing address-point density overlay. "From every polling unit to every national institution."</div>
+    <div class="wf-section"><div class="wf-dot"></div><strong>Ecosystem overview</strong> — Compact visual showing all modules with labeled connections. Teaser to /ecosystem page.</div>
+    <div class="wf-section"><div class="wf-dot gold"></div><strong>Launch countdown</strong> — Days-to-launch counter with "Join the waitlist / Request advance briefing" form. Prominent until 11 May 2026.</div>
+    <div class="wf-section"><div class="wf-dot muted"></div><strong>Footer</strong> — Links, TGIF stewardship note, social icons, WhatsApp share button, © Grandview.</div>
+  </div>
+
+  <h2 class="subsection">How it works ( /how-it-works )</h2>
+  <div class="wireframe-block">
+    <p class="wireframe-label">How it works — explainer page</p>
+    <div class="wf-section"><div class="wf-dot"></div><strong>Explainer hero</strong> — Section title + 1-paragraph intro. "Nigeria's first deterministic national addressing substrate."</div>
+    <div class="wf-section"><div class="wf-dot"></div><strong>Layer 1: Address (AiG-CTG)</strong> — Full-width animated tessellation grid demo. Explains code generation, tile + grid hierarchy, LGA-centric federation. Interactive: type an address → see the AiG code.</div>
+    <div class="wf-section"><div class="wf-dot gold"></div><strong>Layer 2: Verify (CRYLID)</strong> — How CRYLID attaches trust to an address. DTM front-end → CRYLID backend → CTM services. Visual: a person / asset / transaction getting a trust mark.</div>
+    <div class="wf-section"><div class="wf-dot"></div><strong>Layer 3: Map (NINjaMap)</strong> — Cadastral layer. OSM base, overlays, ground-truth plan. Teaser of the map interface.</div>
+    <div class="wf-section"><div class="wf-dot"></div><strong>Interoperability section</strong> — How legacy analog addresses are converted via reverse geocoding. API-first architecture. Standards compliance.</div>
+    <div class="wf-section"><div class="wf-dot muted"></div><strong>CTA</strong> — "See the technical brief" (PDF download) + "Speak with an architect" (contact form).</div>
+  </div>
+
+  <h2 class="subsection">For Business ( /for-business )</h2>
+  <div class="wireframe-block">
+    <p class="wireframe-label">Business audience landing page</p>
+    <div class="wf-section"><div class="wf-dot gold"></div><strong>Vertical tabs</strong> — Insurance · Pensions / POS · Telco · Logistics / E-commerce. Each opens a full scenario with: problem headline, how Address Nigeria + CRYLID solves it, hypothetical ROI frame, "Start pilot conversation" CTA.</div>
+    <div class="wf-section"><div class="wf-dot"></div><strong>Integration paths</strong> — API, white-label DTM, data subscription. Clear integration tiers.</div>
+    <div class="wf-section"><div class="wf-dot"></div><strong>Partner inquiry form</strong> — NDA-aware: "Our pilots are structured with strict confidentiality." Collects company, sector, contact, use-case description.</div>
+  </div>
+</div>
+
+<div class="page-break">05 — Visual Identity</div>
+
+<!-- ───────────────────────────── VISUAL IDENTITY ───────────────────────────── -->
+<div class="page">
+  <p class="section-number">05 — Visual Identity Parameters</p>
+  <h1 class="section-title">Typography, colour, and design language</h1>
+  <p class="lead">The visual language must convey sovereign infrastructure — not startup flair. The reference point is closer to the Ordnance Survey, the Bank of England's digital estate, or the United Nations data platforms: authoritative, precise, enduring.</p>
+
+  <h2 class="subsection">Typography system</h2>
+  <div style="margin:20px 0;">
+    <div class="type-row">
+      <span class="type-label">Display / Hero</span>
+      <span style="font-family:'Playfair Display',serif; font-size:36px; font-weight:700; line-height:1.1">Address Nigeria</span>
+    </div>
+    <div class="type-row">
+      <span class="type-label">Heading 1</span>
+      <span style="font-family:'Playfair Display',serif; font-size:26px; font-weight:600;">National Digital Addressing System</span>
+    </div>
+    <div class="type-row">
+      <span class="type-label">Heading 2</span>
+      <span style="font-family:'DM Sans',sans-serif; font-size:18px; font-weight:600;">How AiG-CTG powers precision addressing</span>
+    </div>
+    <div class="type-row">
+      <span class="type-label">Body / Lead</span>
+      <span style="font-family:'DM Sans',sans-serif; font-size:16px; font-weight:300; color:var(--ink-mid)">Every Nigerian deserves a precise, verifiable address. AiG-CTG makes that possible at national scale.</span>
+    </div>
+    <div class="type-row">
+      <span class="type-label">Code / Monospace</span>
+      <span style="font-family:'DM Mono',monospace; font-size:14px; color:var(--green-mid)">NG·LA·IKJ·0042·B7</span>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>Font rationale.</strong> Playfair Display gives the editorial weight of a founding document — appropriate for a sovereign infrastructure initiative. DM Sans provides functional clarity for interface copy. DM Mono handles the technical layer (address codes, API strings, coordinates) with precision.
+  </div>
+
+  <h2 class="subsection">Colour palette</h2>
+  <div class="swatch-row">
+    <div class="swatch"><div class="swatch-color" style="background:#0e3d2a"></div><span class="swatch-name">Forest Deep<br>#0E3D2A</span></div>
+    <div class="swatch"><div class="swatch-color" style="background:#1a6845"></div><span class="swatch-name">National Green<br>#1A6845</span></div>
+    <div class="swatch"><div class="swatch-color" style="background:#7fcca6"></div><span class="swatch-name">Trust Mint<br>#7FCCA6</span></div>
+    <div class="swatch"><div class="swatch-color" style="background:#d4ede2"></div><span class="swatch-name">Address Light<br>#D4EDE2</span></div>
+    <div class="swatch"><div class="swatch-color" style="background:#b8892a"></div><span class="swatch-name">Sovereign Gold<br>#B8892A</span></div>
+    <div class="swatch"><div class="swatch-color" style="background:#f5e6c0"></div><span class="swatch-name">Gold Tint<br>#F5E6C0</span></div>
+    <div class="swatch"><div class="swatch-color" style="background:#fdfcf8; border-color:rgba(0,0,0,0.15)"></div><span class="swatch-name">Parchment<br>#FDFCF8</span></div>
+    <div class="swatch"><div class="swatch-color" style="background:#0f0e0b"></div><span class="swatch-name">Ink<br>#0F0E0B</span></div>
+  </div>
+
+  <p style="font-size:14px; color:var(--ink-mid); margin-top:12px;">Nigerian green anchors the palette as a national identity signal. Gold provides the gravitas of official documentation. Mint is used sparingly for interactive trust-layer moments (CRYLID marks, verification states). Parchment grounds the document-like reading experience.</p>
+
+  <h2 class="subsection">Design principles</h2>
+  <ol class="num-list">
+    <li><strong>Document-grade typography.</strong> Generous leading, editorial hierarchy. The site should feel like it was designed to last 20 years, not 20 months.</li>
+    <li><strong>Address codes as design elements.</strong> AiG-CTG codes are visually distinctive — monospaced, structured, uniquely Nigerian. They should appear as design motifs, not just data.</li>
+    <li><strong>Grid-as-metaphor.</strong> The AiG tessellation grid is the conceptual spine of the product. Subtle grid overlays, tilework patterns, and map-derived textures reinforce the spatial intelligence narrative.</li>
+    <li><strong>WhatsApp-first shareability.</strong> Every hero section must produce a compelling og:image (1200×630). Clean, large-type, minimal — renders well at 300px thumbnail width.</li>
+    <li><strong>No startup aesthetics.</strong> No floating blobs, no purple-to-pink gradients, no animated particle canvases. This is sovereign infrastructure for a nation of 220 million.</li>
+  </ol>
+</div>
+
+<div class="page-break">06 — Technical Stack</div>
+
+<!-- ───────────────────────────── TECH STACK ───────────────────────────── -->
+<div class="page">
+  <p class="section-number">06 — Technical Stack Recommendation</p>
+  <h1 class="section-title">Technology choices for a sovereign-grade web presence</h1>
+
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#0e3d2a" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      </div>
+      <h3>Framework: Next.js 14+ (App Router)</h3>
+      <p>Server-side rendering for SEO and WhatsApp crawlers. Static generation for content pages. Edge-ready for performance across Nigerian network conditions. TypeScript throughout.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:#e8f4ff">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#185FA5" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      </div>
+      <h3>CMS: Sanity.io (headless)</h3>
+      <p>Content team can update press releases, module descriptions, and team pages without engineering involvement. Structured content + GROQ queries. Portable text for rich editorial blocks.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:#fff0e8">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#993C1D" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <h3>Maps: Mapbox GL JS</h3>
+      <p>Custom-styled Nigeria basemap. AiG-CTG grid overlay rendered as vector tiles. NINjaMap teaser integration. Offline-capable tiles for poor-connectivity demos.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:#f5f0ff">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#534AB7" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <h3>Forms &amp; CRM: Tally + Pipedrive</h3>
+      <p>Tally for embedded forms (partner inquiry, demo request). Webhook to Pipedrive for NDA-aware pipeline management. Zero-dependency, GDPR-compliant form handling.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#0e3d2a" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <h3>Analytics: Plausible (privacy-first)</h3>
+      <p>No cookies, GDPR-compliant. Nigeria-aware traffic intelligence. Appropriate for a sovereign data infrastructure brand — no Google Analytics tracking irony.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:#e8f4ff">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#185FA5" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+      </div>
+      <h3>Hosting: Vercel + Cloudflare</h3>
+      <p>Vercel for Next.js deployment with edge CDN. Cloudflare for DNS, DDoS protection, and Nigerian PoP acceleration (Lagos edge node). Aligns with DG-VS-SiS-774 security posture.</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>Security baseline.</strong> All form submissions over HTTPS with HSTS preloading. Content Security Policy headers. No third-party analytics scripts beyond Plausible. Partner inquiry data is never stored on the public-facing infrastructure — routed immediately to a Pipedrive-controlled environment with NDA flags. Aligns with DG-VS-SiS-774 data exfiltration risk profile.
+  </div>
+</div>
+
+<div class="page-break">07 — Delivery Plan</div>
+
+<!-- ───────────────────────────── TIMELINE ───────────────────────────── -->
+<div class="page">
+  <p class="section-number">07 — Delivery Timeline</p>
+  <h1 class="section-title">Eight-week sprint to 11 May 2026</h1>
+
+  <div class="timeline">
+    <div class="tl-item active">
+      <p class="tl-date">Week 1–2 &nbsp;·&nbsp; 17 Mar – 30 Mar</p>
+      <p class="tl-title">Discovery &amp; Design Direction</p>
+      <p class="tl-desc">Finalise message house and narrative hierarchy with Grandview team. Agree visual identity parameters (type, colour, motion). Align with publicist (Reeva Africa) on digital marketing integration. Deliver: moodboard, type specimen, homepage wireframe v1.</p>
+    </div>
+    <div class="tl-item">
+      <p class="tl-date">Week 3–4 &nbsp;·&nbsp; 31 Mar – 13 Apr</p>
+      <p class="tl-title">Design &amp; Content Architecture</p>
+      <p class="tl-desc">High-fidelity Figma designs for Homepage, How it works, For Business, Ecosystem. Sitemap and URL structure locked. CMS schema defined. WhatsApp og:image templates for all 8 launch pages. Deliver: full Figma design file + content brief.</p>
+    </div>
+    <div class="tl-item">
+      <p class="tl-date">Week 5–6 &nbsp;·&nbsp; 14 Apr – 27 Apr</p>
+      <p class="tl-title">Development Sprint</p>
+      <p class="tl-desc">Next.js build. CMS integration. Mapbox AiG-CTG grid overlay. Form + CRM pipeline. Mobile-optimised (WhatsApp-first). Launch countdown component. SEO metadata and structured data. Deliver: staging environment, full content management access for team.</p>
+    </div>
+    <div class="tl-item">
+      <p class="tl-date">Week 7 &nbsp;·&nbsp; 28 Apr – 4 May</p>
+      <p class="tl-title">Content Integration &amp; QA</p>
+      <p class="tl-desc">Full content population by Grandview / Reeva Africa team in CMS. Cross-browser and device QA. Performance budget: Lighthouse score ≥ 90. Accessibility audit (WCAG 2.1 AA). WhatsApp share testing. Deliver: QA sign-off report.</p>
+    </div>
+    <div class="tl-item">
+      <p class="tl-date">Week 8 &nbsp;·&nbsp; 5 May – 11 May</p>
+      <p class="tl-title">Launch &amp; Activation</p>
+      <p class="tl-desc">DNS cutover 48 hours before launch. Integrated social media activation with Reeva Africa. WhatsApp broadcast assets live. Analytics baseline established. Monitoring and hotfix support on launch day. Deliver: live site + launch report.</p>
+    </div>
+  </div>
+
+  <h2 class="subsection">Deliverables checklist</h2>
+  <ul class="deliverable-list">
+    <li><div class="check"><svg viewBox="0 0 10 10" fill="none" stroke="#0e3d2a" stroke-width="2"><polyline points="2 5 4 7 8 3"/></svg></div>Homepage + 7 core launch pages (designed, built, content-managed)</li>
+    <li><div class="check"><svg viewBox="0 0 10 10" fill="none" stroke="#0e3d2a" stroke-width="2"><polyline points="2 5 4 7 8 3"/></svg></div>CMS with full editorial control for Grandview team</li>
+    <li><div class="check"><svg viewBox="0 0 10 10" fill="none" stroke="#0e3d2a" stroke-width="2"><polyline points="2 5 4 7 8 3"/></svg></div>Mapbox AiG-CTG grid overlay (interactive on /how-it-works)</li>
+    <li><div class="check"><svg viewBox="0 0 10 10" fill="none" stroke="#0e3d2a" stroke-width="2"><polyline points="2 5 4 7 8 3"/></svg></div>Partner/pilot inquiry pipeline (Tally + Pipedrive + NDA flags)</li>
+    <li><div class="check"><svg viewBox="0 0 10 10" fill="none" stroke="#0e3d2a" stroke-width="2"><polyline points="2 5 4 7 8 3"/></svg></div>WhatsApp og:image templates for all pages</li>
+    <li><div class="check"><svg viewBox="0 0 10 10" fill="none" stroke="#0e3d2a" stroke-width="2"><polyline points="2 5 4 7 8 3"/></svg></div>Launch countdown widget (embeddable + on-site)</li>
+    <li><div class="check"><svg viewBox="0 0 10 10" fill="none" stroke="#0e3d2a" stroke-width="2"><polyline points="2 5 4 7 8 3"/></svg></div>Press kit page with downloadable PDF assets</li>
+    <li><div class="check"><svg viewBox="0 0 10 10" fill="none" stroke="#0e3d2a" stroke-width="2"><polyline points="2 5 4 7 8 3"/></svg></div>SEO: structured data, OpenGraph, Twitter cards, sitemap.xml</li>
+    <li><div class="check"><svg viewBox="0 0 10 10" fill="none" stroke="#0e3d2a" stroke-width="2"><polyline points="2 5 4 7 8 3"/></svg></div>Security baseline: HTTPS, HSTS, CSP headers, Cloudflare WAF</li>
+    <li><div class="check"><svg viewBox="0 0 10 10" fill="none" stroke="#0e3d2a" stroke-width="2"><polyline points="2 5 4 7 8 3"/></svg></div>Post-launch placeholder hooks: /ninjamap, /protiva, /developers</li>
+  </ul>
+</div>
+
+<div class="page-break">08 — Investment &amp; Next Steps</div>
+
+<!-- ───────────────────────────── INVESTMENT ───────────────────────────── -->
+<div class="page">
+  <p class="section-number">08 — Investment</p>
+  <h1 class="section-title">Engagement tiers</h1>
+  <p class="lead">All tiers cover the 11 May 2026 launch scope. The distinction is in the depth of interactive experience, post-launch expansion capacity, and team integration.</p>
+
+  <div class="price-grid">
+    <div class="price-card">
+      <p class="price-tier">Foundation</p>
+      <p class="price-amount">₦6.8M</p>
+      <p class="price-period">One-time · 8-week delivery</p>
+      <ul class="price-features">
+        <li>8 launch pages (design + build)</li>
+        <li>Sanity CMS with editorial control</li>
+        <li>Static Mapbox map embed</li>
+        <li>Partner inquiry pipeline</li>
+        <li>WhatsApp og:image templates</li>
+        <li>12 weeks post-launch support</li>
+      </ul>
+    </div>
+    <div class="price-card featured">
+      <p class="price-tier">Sovereign</p>
+      <p class="price-amount" style="color:#7fcca6">₦9.2M</p>
+      <p class="price-period">One-time · 8-week delivery</p>
+      <ul class="price-features">
+        <li>Everything in Foundation</li>
+        <li>Interactive AiG-CTG grid demo</li>
+        <li>Use-case tab selector (5 verticals)</li>
+        <li>Launch countdown + waitlist</li>
+        <li>Press kit + downloadable assets</li>
+        <li>6-month post-launch retainer</li>
+        <li>NINjaMap + PROTIVA expansion ready</li>
+        <li>Developer API docs scaffold</li>
+      </ul>
+    </div>
+    <div class="price-card">
+      <p class="price-tier">Ecosystem</p>
+      <p class="price-amount">₦16M+</p>
+      <p class="price-period">Phased · 16-week delivery</p>
+      <ul class="price-features">
+        <li>Everything in Sovereign</li>
+        <li>Full NINjaMap web interface</li>
+        <li>PROTIVA property verification MVP</li>
+        <li>CRYLID trust mark API portal</li>
+        <li>Institutional dashboard (Phase 2)</li>
+        <li>12-month embedded team retainer</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="subsection">Immediate next steps</h2>
+  <ol class="num-list">
+    <li>Review this proposal with the Grandview team and confirm tier selection.</li>
+    <li>Align with Reeva Africa (publicist) on content delivery schedule and social media activation plan for 11 May.</li>
+    <li>Provide domain, brand assets (existing logo files, any existing style guidance), and access to AiG-CTG code samples for the interactive demo.</li>
+    <li>Kick-off meeting: message house sign-off + visual identity workshop (Week 1).</li>
+  </ol>
+
+  <div class="callout">
+    <strong>Proposal validity.</strong> This proposal is valid for 30 days from the date of issue (17 March 2026). Given the 11 May 2026 launch target, engagement must begin no later than <strong>31 March 2026</strong> to execute the full 8-week delivery plan without risk to launch date.
+  </div>
+</div>
+
+<!-- ───────────────────────────── FOOTER ───────────────────────────── -->
+<div class="doc-footer">
+  <span><strong>Address Nigeria Web Design Proposal</strong> · Grandview / G-DPIPS / TGIF</span>
+  <span>Prepared 17 March 2026 · Confidential</span>
+  <span>Proposal valid until <strong>17 April 2026</strong></span>
+</div>
+
+</body>
+</html>
